@@ -1,7 +1,52 @@
-<h2>Login</h2>
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+{% block title %}Login | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<style>
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.margin-b-50 {
+  margin-bottom: 50px;
+}
+
+.margin-b-20 {
+  margin-bottom: 20px;
+}
+</style>
+
+<div style="text-align: center;">
+  <form method="post" class="form-signin">{% csrf_token %}
+    <h1 class="h3 mb-3 font-weight-normal margin-b-50">SIGN IN</h1>
+
+    {% for field, errors in form.errors.items %}
+      <div style="color: #ff0000;">
+        <h3>Incorrect Password or Username</h3>
+      </div>
+    {% endfor %}
+
+    {% render_field form.username class="form-control margin-b-20" placeholder=form.username.label %}
+    {% render_field form.password class="form-control margin-b-50" placeholder=form.password.label %}
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div>
+
+{% endblock %}
