@@ -1,0 +1,24 @@
+# mac
+.DS_Store
+
+# python
+*/__pycache__/*
+__pycache__/*
+
+# secrets
+.env
+
+# virtualenv
+venv
+
+# database
+*.sqlite3
+
+# editor
+.vscode
+.idea
+.editorconfig
+
+# static/media files
+static
+media

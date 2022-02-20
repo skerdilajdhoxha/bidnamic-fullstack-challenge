@@ -1,0 +1,5 @@
+Django==3.2.12
+pip-tools==6.4.0
+black==22.1.0
+isort==5.10.1
+python-dotenv==0.19.2
