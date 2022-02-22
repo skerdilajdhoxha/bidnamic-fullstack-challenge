@@ -8,7 +8,6 @@ from .models import Task
 @login_required
 def task_list(request):
     tasks = Task.objects.all()
-    print(tasks)
     context = {"tasks": tasks}
     return render(request, "tasks/task_list.html", context)
 
@@ -21,10 +20,6 @@ def create_task(request):
             form.save()
             return redirect("task_list")
         else:
-            # print(form.errors.as_data())
-            # for field in form:
-            #     for error in field.errors:
-            #         print(error, 'error,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
             return render(request, "tasks/create_task.html", {"form": form})
     else:
         form = TaskCreateForm()

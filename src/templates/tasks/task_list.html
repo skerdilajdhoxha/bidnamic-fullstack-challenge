@@ -29,6 +29,8 @@
           Created: {{ task.created|date:"M d, Y" }}
         </div>
       </div>
+    {% empty %}
+    <div class="margin-t-20"><h3>There is no task here.</h3></div>
     {% endfor %}
   </div>
 </div>

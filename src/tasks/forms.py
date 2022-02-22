@@ -14,18 +14,16 @@ class TaskCreateForm(forms.ModelForm):
         widgets = {"date_of_birth": DateTimeInput()}
 
     def clean_date_of_birth(self):
-        eighteen_yrs = timezone.now().date() - relativedelta(years=18)
-        print(
-            self.cleaned_data["date_of_birth"],
-            "========",
-            timezone.now().date(),
-            "=============",
-            eighteen_yrs,
-            "-----------------",
-            timezone.now().date() - self.cleaned_data["date_of_birth"],
-        )
-
+        """Must be more than 18 to create a task."""
+        eighteen_yrs_ago = timezone.now().date() - relativedelta(years=18)
         date_of_birth = self.cleaned_data["date_of_birth"]
-        if date_of_birth > timezone.now().date():
-            raise forms.ValidationError("Date cannot be later than today.")
+        if date_of_birth > eighteen_yrs_ago:
+            raise forms.ValidationError("You have to be +18 to create a task.")
         return date_of_birth
+
+    def clean_google_ads_account_id(self):
+        """Google Ads account ID should be 10 letters."""
+        google_ads_account_id = self.cleaned_data["google_ads_account_id"]
+        if len(google_ads_account_id) != 10:
+            raise forms.ValidationError("Your Google account must be ten letters.")
+        return google_ads_account_id

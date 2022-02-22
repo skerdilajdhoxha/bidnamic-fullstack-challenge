@@ -36,11 +36,20 @@
   <form method="post" class="form-signin">{% csrf_token %}
     <h1 class="h3 mb-3 font-weight-normal margin-b-50">SIGN IN</h1>
 
-    {% for field, errors in form.errors.items %}
-      <div style="color: #ff0000;">
-        <h3>Incorrect Password or Username</h3>
-      </div>
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
     {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
 
     {% render_field form.username class="form-control margin-b-20" placeholder=form.username.label %}
     {% render_field form.password class="form-control margin-b-50" placeholder=form.password.label %}
