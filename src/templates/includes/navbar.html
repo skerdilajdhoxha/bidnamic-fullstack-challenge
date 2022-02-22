@@ -5,7 +5,10 @@
   <div class="collapse navbar-collapse" id="navb">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)">Home</a>
+        <a class="nav-link" href="{% url 'task_list' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'create_task' %}">Create task</a>
       </li>
     </ul>
     {% if request.user.is_authenticated %}

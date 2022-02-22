@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Create task | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<div class="centered">
+  <form method="post" class="form-signin">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal margin-b-50">Create a task</h1>
+
+    {% render_field form.title class="form-control margin-b-20" placeholder=form.title.label %}
+    {% render_field form.first_name class="form-control margin-b-20" placeholder=form.first_name.label %}
+    {% render_field form.surname class="form-control margin-b-20" placeholder=form.surname.label %}
+    {% render_field form.date_of_birth class="form-control margin-b-20" placeholder=form.date_of_birth.label %}
+    {% render_field form.company_name class="form-control margin-b-20" placeholder=form.company_name.label %}
+    {% render_field form.address class="form-control margin-b-20" placeholder=form.address.label %}
+    {% render_field form.telephone class="form-control margin-b-20" placeholder=form.telephone.label %}
+    {{ form.bidding_settings.label }}
+    {% render_field form.bidding_settings class="form-control margin-b-20" placeholder=form.bidding_settings.label %}
+    {% render_field form.google_ads_account_id class="form-control margin-b-50" placeholder=form.google_ads_account_id.label %}
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>
+
+{% endblock %}

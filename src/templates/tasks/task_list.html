@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Task list | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<div class="container pa0 flex justify-center">
+  <div class="listings card-columns">
+    {% for task in tasks %}
+      <div class="card margin-t-20">
+        <div class="card-body">
+          <h4 class="card-title"><strong>{{ task }}</strong></h4>
+          <p class="card-text">
+            <strong>First Name: </strong>{{ task.first_name }}<br>
+            <strong>Surname: </strong>{{ task.surname }}<br>
+            <strong>Date of Birth: </strong>{{ task.date_of_birth }}<br>
+            <strong>Company name: </strong>{{ task.company_name }}<br>
+            <strong>Address: </strong>{{ task.address }}<br>
+            <strong>Telephone: </strong>{{ task.telephone }}<br>
+            <strong>Bidding settings: </strong>{{ task.bidding_settings }}<br>
+            <strong>Google Ads Account id: </strong>{{ task.google_ads_account_id }}<br>
+          </p>
+          <a href="{% url 'delete_task' task_id=task.pk %}">
+            <i class="fa fa-trash trash-bin-icon"></i>
+          </a>
+        </div>
+        <div class="card-footer">
+          Created: {{ task.created|date:"M d, Y" }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

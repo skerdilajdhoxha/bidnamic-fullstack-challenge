@@ -1,0 +1,37 @@
+/*This are the custom css for the whole project*/
+
+.centered {
+  text-align: center;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.margin-b-50 {
+  margin-bottom: 50px;
+}
+
+.margin-b-20 {
+  margin-bottom: 20px;
+}
+
+.margin-t-20 {
+  margin-top: 20px;
+}
+
+.trash-bin-icon {
+  font-size:20px;
+  color:red;
+}
