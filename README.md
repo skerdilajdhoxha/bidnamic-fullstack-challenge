@@ -4,9 +4,11 @@
 - Clone the project into your machine: `git clone <repo>`
 - Cd into the project dir and create a virtual environment.
 
-- `python3 -m pip venv <venv>` or `virtualenv <venv>`. The first one comes with Python 3
+- `python3 -m venv <venv>` or `virtualenv <venv>`. The first one comes with Python 3
 - Activate virtual environment: `source <venv>/bin/activate`. This command works only for Unix systems. For Windows `<venv>\Scripts\activate`
-- Install dependencies: `pip install -r requireements/requireements.txt`.
+- Install dependencies: `pip install -r requirements/requirements.txt`.
+- Create .env file: `nano <project_name>/src/bidnamic/.env`. It contains environment variables.
+This file shouldn't be pushed into Github. You'll get the info in the email sent to you.
 - `cd src` then run:
 - `python manage.py makemigrations`
 - `python manage.py migrate`
@@ -19,6 +21,7 @@
 
 ## Notes
 
+- The project was created with Python3.6.
 - The project uses Bootstrap 4 through a cdn.
 - You have sign in to see the contents of the app.
 - Task creation has two validations:
