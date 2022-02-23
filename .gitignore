@@ -22,3 +22,7 @@ venv
 # static/media files
 static
 media
+
+# coverage
+.coverage
+htmlcov
