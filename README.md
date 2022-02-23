@@ -32,3 +32,4 @@ This file shouldn't be pushed into Github. You'll get the info in the email sent
 Run tests: `coverage run manage.py test`
 Report: `coverage report -m`
 Html report: `coverage html`
+- For CI I would suggest Github actions
